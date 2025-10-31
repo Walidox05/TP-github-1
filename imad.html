@@ -1,10 +1,92 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Mini IQ Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      padding: 20px;
+      max-width: 600px;
+      margin: 30px auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+    }
+    .question {
+      margin-bottom: 15px;
+      padding: 10px;
+      background: white;
+      border-radius: 8px;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background: #007bff;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    #result {
+      font-weight: bold;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Hello World</h1>
+
+  <h2>🧠 Mini IQ QCM Test</h2>
+
+  <form id="iqForm">
+    <div class="question">
+      <p>1️⃣ Which number comes next? 2, 4, 8, 16, ...</p>
+      <label><input type="radio" name="q1" value="32"> 32</label><br>
+      <label><input type="radio" name="q1" value="24"> 24</label><br>
+      <label><input type="radio" name="q1" value="20"> 20</label>
+    </div>
+
+    <div class="question">
+      <p>2️⃣ What is the opposite of “north”?</p>
+      <label><input type="radio" name="q2" value="east"> East</label><br>
+      <label><input type="radio" name="q2" value="south"> South</label><br>
+      <label><input type="radio" name="q2" value="west"> West</label>
+    </div>
+
+    <div class="question">
+      <p>3️⃣ If 5 cats catch 5 mice in 5 minutes, how long for 1 cat to catch 1 mouse?</p>
+      <label><input type="radio" name="q3" value="1"> 1 minute</label><br>
+      <label><input type="radio" name="q3" value="5"> 5 minutes</label><br>
+      <label><input type="radio" name="q3" value="25"> 25 minutes</label>
+    </div>
+
+    <button type="button" onclick="checkIQ()">Submit</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    function checkIQ() {
+      let score = 0;
+      const answers = { q1: "32", q2: "south", q3: "5" };
+
+      for (let key in answers) {
+        const selected = document.querySelector(`input[name="${key}"]:checked`);
+        if (selected && selected.value === answers[key]) score++;
+      }
+
+      document.getElementById("result").innerHTML = 
+        `✅ You got ${score}/3 correct!`;
+    }
+  </script>
+
 </body>
 </html>
