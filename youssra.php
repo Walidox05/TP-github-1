@@ -15,4 +15,6 @@ try {
 } catch (PDOException $e) {
     echo "❌ Erreur de connexion : " . $e->getMessage();
 }
+
+  $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
 ?>
